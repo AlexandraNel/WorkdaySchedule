@@ -1,41 +1,23 @@
 $(document).ready(function () {
 
-var now = dayjs();
+  var now = dayjs(); //now variable gets todays date and time from dayjs
 
-//event listener in jquery for clicking save button. saveTask function runs when clicked. 
-$('.saveBtn').on('click', handleSaveTask);
+  $('.time-block').each(function () { //loop through every time block
+    var timeBlockId = $(this).attr('id'); //get the id attribute from time block 
+    var savedTask = localStorage.getItem(timeBlockId); //in local storage if the time-block id has a matching key, get that item
 
-//get existing local storage
-$('.time-block').each(function (){
-  var textAreaId = $(this).attr('id');
-  populateTasks(textAreaId) 
-})
+    if (savedTask) { //if the item savedTask exists in local storage
+      $(this).find('.description').val(savedTask); //find the 'description' class of this time-block, insert the retrieved savedTask }
+    }
+  });
 
+  //event listener in jquery for clicking save button.  
+  $('.saveBtn').click(function () {
+    var timeBlockId = $(this).parent().attr('id'); //get the id from the time block that is the parent of the clicked button
+    var taskText = $(this).siblings('.description').val(); //get the text (.val) from the text area class .descrption
 
-
-//handleSaveTask to run on .saveBtn click event listener
-function handleSaveTask(event) {
-  event.preventDefault();
-
-  //get the id of the closest text area to the clocked save button
-  var textAreaId = $(this).closest('.time-block').attr('id');
-  //grab the value of that text area
-  var newTask = $(this).siblings('textarea').val();
-
-  //call the populateTaskDivs function to  add existing local storage to time blocks
-  populateTasks(textAreaId, newTask);
-    //Set our local storage with the newTask once saved, textAreaId being the key, newTask being the value
-  //this will replace existing tasks, as well as set new ones.
-  localStorage.setItem(textAreaId, JSON.stringify(newTask));
-}
-
-
-    // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
+    localStorage.setItem(timeBlockId, taskText) //store in localstorage using the id of the div as key and the text input as value.
+  });
 
 //  if () 
 // $('textarea').addClass('past');
@@ -50,12 +32,7 @@ function handleSaveTask(event) {
   
   
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-
-  //add the date to the header of the doc (section id "current day"), 
-  // in format ie Monday, Jan 04 2024)
+//sets day, month, date, and year in the currentDay ID tag of the header.
    $('#currentDay').text(now.format('dddd, MMM DD YYYY'));
 });
 
