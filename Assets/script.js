@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   var now = dayjs(); //now variable gets todays date and time from dayjs
+  var nowHour = dayjs().hour(); //get the hour that it is now
 
   $('.time-block').each(function () { //loop through every time block
     var timeBlockId = $(this).attr('id'); //get the id attribute from time block 
@@ -18,25 +19,34 @@ $(document).ready(function () {
 
     localStorage.setItem(timeBlockId, taskText) //store in localstorage using the id of the div as key and the text input as value.
   });
+  //create loop through all of the time blocks that gets the id from the end of the timeblock
+  //change that id into a number so it can be compared to our number variable nowHour
+  //add the class past, present, future depending on whether that number is equal, less than, or greater than the current hour
 
-//  if () 
-// $('textarea').addClass('past');
-// $('textarea').addClass('present');
-// $('textarea').addClass('future');
+  $('.time-block').each(function () { //loop through all elements with a time block class
+    var idHour = ($(this).attr('id').split('-').pop()); //get the number after '-' in the id (ie. the hour)
+    idHour = parseInt(idHour); //need to transform the string from .split into a number to compare to the hour
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  
-  
+    var textArea = $(this).find('textarea'); //find the single text area concerned in this iteration of the loop
 
-//sets day, month, date, and year in the currentDay ID tag of the header.
-   $('#currentDay').text(now.format('dddd, MMM DD YYYY'));
+    if (nowHour === idHour) {
+      textArea.addClass('present');
+    }
+    if (nowHour > idHour) {
+      textArea.addClass('past');
+    }
+    else if (nowHour < idHour) {
+      textArea.addClass('future');
+    }
+  });
+
+  //sets day, month, date, and year in the currentDay ID tag of the header.
+  $('#currentDay').text(now.format('dddd, MMM DD YYYY'));
+
+    //created a clear button for when yesterdays tasks get annoying and you want to clear everything
+$('.btnClear').click(function(){
+  $('.description').val("");
+  localStorage.clear();
+
 });
-
-// Use class for "past", "present", and "future" to apply styles to the
-//         time-block divs accordingly. The javascript will need to do this by
-//         adding/removing these classes on each div by comparing the hour in the
-//         id to the current hour. 
+});
