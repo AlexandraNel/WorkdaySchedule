@@ -17,15 +17,15 @@ You can now manage your time efficiently by scheduling your tasks and chasing do
 
 ## Technologies
 
--Git Hub
--Html
--Css
--Javascript
--JQuery v3.7.1
--DayJS v1.11.10
--Bootstrap v5.1.3
--Font Awesome v5.8.1
--Google Api Fonts
+- Git Hub
+- Html
+- Css
+- Javascript
+- JQuery v3.7.1
+- DayJS v1.11.10
+- Bootstrap v5.1.3
+- Font Awesome v5.8.1
+- Google Api Fonts
 
 This application was an activity in allowing me to explore the application of jquery and day js
 
@@ -46,10 +46,10 @@ Full repository can be accessed here:
 ``````
 To view repo contents please navigate to the above link there you will find
 - assets folder
-    -gif
-    -License
-    -script.js
-    -Style.css
+    - gif
+    - License
+    - script.js
+    - Style.css
 - README.md
 - index.html
 
