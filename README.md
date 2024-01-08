@@ -37,29 +37,28 @@ This application was an activity in allowing me to explore the application of jq
 
 Website has been deployed and is available from this link:
 
-[Quiz Website](https://alexandranel.github.io/TimedCodingQuiz/)
+[Workday Schedule - Daily Planner Website](https://alexandranel.github.io/WorkdaySchedule/)
 
 Full repository can be accessed here:
 
-[Git Repository](https://github.com/AlexandraNel/TimedCodingQuiz/)
+[Git Repository](https://github.com/AlexandraNel/WorkdaySchedule)
 
 ``````
 To view repo contents please navigate to the above link there you will find
 - assets folder
-- source branding folder
-- readme
+    -gif
+    -License
+    -script.js
+    -Style.css
+- README.md
 - index.html
-- scores.html
-- script.js
-- scriptSCORES.js
 
-**Note** Css style sheets are contained within the assets folder. Navigate within the assets folder, there you will find the css stylesheet and the css reset. Please note the ccs reset is a templated asset, for the custom stylesheet please view styles.css
 ``````
 
 ## Usage
 
-This website was constructed in an effort to improve javascript knowledge
-Its usage is of a simple 5 question quiz, and leaderboard.
+This website was constructed in an effort to improve jquery and dayjs knowledge
+Its usage is of a simple 9-5, daily scheduler.
 
 ## Support
 
@@ -70,11 +69,8 @@ info@alexandranel.com
 
 Moving forward the following improvements can be made
 
-- localStorage needs to be refined so that when accessing the highscores from the index page, they exist there already.
-- local.storage does not seem to persist beyond refresh requires debug
-- The questions can be extended out to include more
-- The questions could also be optimised to generate randomly between the index instead of sequentially
-- The radio buttons can be styled in the css to look more interesting
+- Design can be imrpoved by extending the css stylesheets
+- Daily tasks can be saved to a server in order to retrieve yearly progress reports
 
 ## Authors and Acknowledgment
 
@@ -82,8 +78,7 @@ This website was made under the guidance and with assistance from
 - the team at MONASH UNI full Stack Dev Bootcamp
 - Instructor Chee Ho Tai
 - TA Pranita Shrestha
-- Tutor Meg Meyers
-- Debug and tutor Chat GPT
+- Tutor Weng Fei Fung 
 
 ## Licence
 MIT License
